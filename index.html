@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nosso Tempo Juntos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(to bottom, #ff758c, #ff7eb3);
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            margin-top: 370px;
+        }
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        .contador {
+            font-size: 1.8rem;
+            font-weight: bold;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            margin: 15px 0;
+            transition: transform 0.3s ease-in-out;
+        }
+        .contador:hover {
+            transform: scale(1.05);
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        img {
+            width: 350px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease-in-out;
+        }
+        img:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <h1>Nosso Amor em Números 💖</h1>
+    <div class="container">
+        <p class="contador" id="contadorCasamentoReligioso"></p>
+        <img src="./casamento.jpg" alt="Nosso Casamento Religioso">
+        <p class="contador" id="contadorCasamentoCartorio"></p>
+        <img src="./cartorio.jpg" alt="Nosso Casamento no Cartório">
+        <p class="contador" id="contadorOutro"></p>
+        <img src="./inicio.png" alt="Nosso Começo">
+    </div>
+    <script>
+        function calcularDiferenca(dataAlvo) {
+            const agora = new Date();
+            const diferenca = agora - dataAlvo;
+            
+            if (diferenca < 0) {
+                return "Ainda não chegou o dia! ❤️";
+            }
+            
+            const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
+            const horas = Math.floor((diferenca % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutos = Math.floor((diferenca % (1000 * 60 * 60)) / (1000 * 60));
+            const segundos = Math.floor((diferenca % (1000 * 60)) / 1000);
+            
+            return `${dias}d ${horas}h ${minutos}m ${segundos}s`;
+        }
+        
+        function atualizarContadores() {
+            document.getElementById('contadorCasamentoReligioso').innerHTML = `Desde o nosso casamento religioso: ${calcularDiferenca(new Date('2024-12-06T00:20:00'))}`;
+            document.getElementById('contadorCasamentoCartorio').innerHTML = `Desde o nosso casamento no cartório: ${calcularDiferenca(new Date('2024-11-04T00:09:00'))}`;
+            document.getElementById('contadorOutro').innerHTML = `Desde que nos conhecemos: ${calcularDiferenca(new Date('2023-09-09T00:00:00'))}`;
+        }
+        
+        setInterval(atualizarContadores, 1000);
+        atualizarContadores();
+    </script>
+</body>
+</html>
